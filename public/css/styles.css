@@ -1,20 +1,22 @@
-footer.page-footer{
-    position:absolute !important;
-    bottom: 0px !important;
-    width: 100%;
-    padding-top: 10px !important;
-    padding-bottom: 8px !important;
-    margin-top: 10px !important;
 
-}
+  
+      
 
 
 .carousel.carousel-slider{
-  height: 520px !important;
+  height: 550px !important;
   background-image:"../images/user-profile-bg.jpg"
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
+  main {
+    flex: 1 0 auto;
+  }
 
 
 
