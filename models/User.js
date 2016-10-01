@@ -1,9 +1,10 @@
 var mongoose = require('mongoose'),
+    Gift = require('../models/Gift.js')
     bcrypt = require('bcrypt-nodejs')
 
     var userSchema = new mongoose.Schema({
         local:{
-            name:{type:String,unique:true},
+            name:String,
             email:String,
             password:String
         },
@@ -15,7 +16,7 @@ var mongoose = require('mongoose'),
             email:String
         },
 
-        gift:[{type:mongoose.Schema.Types.ObjectId, ref:'Gift'}]
+        gifts:[{type: mongoose.Schema.Types.ObjectId, ref:'Gift'}]
     })
 
 

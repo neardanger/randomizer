@@ -3,7 +3,7 @@ footer.page-footer{
     bottom: 0px !important;
     width: 100%;
     padding-top: 10px !important;
-    padding-bottom: 2px !important;
+    padding-bottom: 8px !important;
     margin-top: 10px !important;
 
 }
@@ -11,6 +11,7 @@ footer.page-footer{
 
 .carousel.carousel-slider{
   height: 520px !important;
+  background-image:"../images/user-profile-bg.jpg"
 }
 
 

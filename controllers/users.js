@@ -32,7 +32,10 @@ module.exports = {
     patch: function(req,res,next){
         User.findOneAndUpdate({_id:req.params.id},req.body,function(err,user){
             if(err) return console.log(err)
-            res.json({success:true, updatedUser:user})
+            user.save(function(err,user){
+                if(err) return console.log(err)
+                res.json({success:true, updatedUser:user})
+            })
         })
     }
 }

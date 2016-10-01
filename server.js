@@ -13,6 +13,7 @@ var express = require('express'),
     passport = require('passport'),
     request = require('request'),
     userRoutes = require('./routes/users.js')
+    giftRoutes = require('./routes/gifts.js')
 
 
 
@@ -37,7 +38,7 @@ app.use(ejsLayouts)
 
 
 var port = process.env.PORT || 8000
-var dbUrl = process.env.MLAB_LINK || 'mongodb://localhost/gifter'
+var dbUrl = process.env.MLAB_LINK || 'mongodb://localhost/giphtur'
 
 mongoose.connect(dbUrl,function(err){
     if(err) return console.log('Cannot connect to the server:(')
@@ -58,4 +59,5 @@ app.listen(port,function(req,res,next){
 //Advanced routes
 
 app.use('/',userRoutes)
+app.use('/',giftRoutes)
 
