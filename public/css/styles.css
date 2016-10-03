@@ -5,7 +5,7 @@
 
 .carousel.carousel-slider{
   height: 550px !important;
-  background-image:"../images/user-profile-bg.jpg"
+  padding-top: 0px;
 }
 
 body {
@@ -17,6 +17,17 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+  footer.page-footer {
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    background-color: #ee6e73;
+}
+
+footer.footer{
+  padding-top: 0px !important;
+  
+}
 
 
 
