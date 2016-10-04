@@ -18,6 +18,29 @@ var express = require('express'),
             res.render('index')
         })
 
+    userRouter.route('/signup')
+        .get(function(req,res){
+            res.render('signup',{message: req.flash('signIn'),user:req.user}) 
+        })
+        .post(passport.authenticate('local-signup',{
+            successRedirect : '/signup',
+            failureRedirect : '/signup'
+
+        }))
+    userRouter.route('/login')
+        .get(function(req,res){
+            
+        })
+
+
+
+
+        function isLoggedIn(res,req,next){
+            if(req.isAuthenticated()) return next()
+            res.redirect('/signup')
+        }
+    
+
 
 
         module.exports = userRouter

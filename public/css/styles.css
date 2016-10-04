@@ -4,7 +4,7 @@
 
 
 .carousel.carousel-slider{
-  height: 550px !important;
+  height: 650px !important;
   padding-top: 0px;
 }
 
@@ -25,12 +25,12 @@ body {
 }
 
 footer.footer{
-  padding-top: 0px !important;
   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
 }
-
-
-
 
 .icon-block {
   padding: 0 15px;

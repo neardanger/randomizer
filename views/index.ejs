@@ -1,8 +1,12 @@
+
+<!--modal trigger-->
+
+        
 <div class="carousel carousel-slider center" data-indicators="true">
 
   <div class="carousel-fixed-item center">
 
-    <button class="btn waves-effect waves-light purple darken-4" type="submit" name="action">Get Started
+    <button data-target="modal1" class="btn modal-trigger waves-effect waves-light purple darken-4" type="submit" href="#modal1" id="sign-up">Get Started
     <i class="material-icons right">play_arrow</i>
   </button>
   
@@ -31,5 +35,10 @@
 
   <script>
   $('.carousel.carousel-slider').carousel({full_width: true});
+  
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
   </script>
         
