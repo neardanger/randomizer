@@ -11,14 +11,21 @@
         <script src="public/bower_components/materialize/dist/js/materialize.js"></script>
         
     </head>
+    <header class="header">
+        <% include ./partials/nav.ejs %> 
+    </header>
+
     <body>
-    <% include ./partials/nav.ejs %>
+   
+
+
+   
     <div class = "container" style="text-align:center">
-       
+ <%- body %>
     </div>
 
     
- <%- body %>
+
 
 
     
@@ -37,12 +44,7 @@
    
    
    <footer class="footer">
-        
-  
     <% include ./partials/footer.ejs %>
-
-   
-
     </footer>
  </body>
 
