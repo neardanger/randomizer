@@ -1,6 +1,8 @@
 
   
-      
+#title{
+ margin-top: 125px !important;
+}    
 
 
 .carousel.carousel-slider{
@@ -68,7 +70,7 @@ video#bgvid {
 
 @media screen and (max-device-width: 800px) {
     html {
-         background: url(polina.jpg) #000 no-repeat center center fixed;
+         background: url(user-profile-bg.jpg) #000 no-repeat center center fixed;
     }
     #bgvid {
         display: none;
