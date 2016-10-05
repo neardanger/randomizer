@@ -4,6 +4,10 @@
  margin-top: 100px !important;
 }    
 
+#bigLine{
+  margin-bottom: 250px !important;
+  height: 10px !important;
+}
 
 .carousel.carousel-slider{
   position: absolute !important;
