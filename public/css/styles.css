@@ -70,7 +70,7 @@ video#bgvid {
 
 @media screen and (max-device-width: 800px) {
     html {
-         background: url(user-profile-bg.jpg) #ee6e73 no-repeat center center fixed;
+         background-image: url("user-profile-bg.jpg") #ee6e73 no-repeat center center fixed;
     }
     #bgvid {
         display: none;
