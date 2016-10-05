@@ -28,7 +28,7 @@ body {
     background-color: #ee6e73;
 }
 
-nav.purple.darken-4{
+nav.teal.lighten-1{
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -70,7 +70,7 @@ video#bgvid {
 
 @media screen and (max-device-width: 800px) {
     html {
-         background: url(user-profile-bg.jpg) #000 no-repeat center center fixed;
+         background: url(user-profile-bg.jpg) #ee6e73 no-repeat center center fixed;
     }
     #bgvid {
         display: none;
