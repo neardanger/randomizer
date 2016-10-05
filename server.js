@@ -38,7 +38,7 @@ app.use(ejsLayouts)
 
 
 var port = process.env.PORT || 8000
-var dbUrl = process.env.MLAB_LINK || 'mongodb://localhost/giphtur'
+var dbUrl = process.env.MLAB_URI || 'mongodb://localhost/giphtur'
 
 mongoose.connect(dbUrl,function(err){
     if(err) return console.log('Cannot connect to the server:(')

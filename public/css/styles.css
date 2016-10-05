@@ -2,6 +2,10 @@
   
 #title{
  margin-top: 100px !important;
+}
+
+#sign_up{
+  margin-top: 175px !important;
 }    
 
 #bigLine{
@@ -83,6 +87,10 @@ footer.footer{
 
 html{
   background: #bbdefb no-repeat center center fixed;
+}
+
+label.double1{
+  margin-left: 25px !important;
 }
 
 
