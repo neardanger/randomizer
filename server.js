@@ -30,11 +30,11 @@ app.use(session({
     cookie:{_expires: 6000000}
 }))
 
+
+
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
-app.use(passport.initialize())
-app.use(passport.session())
 
 
 app.set('view engine','ejs')

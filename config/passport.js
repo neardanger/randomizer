@@ -19,12 +19,11 @@ var passport = require('passport'),
         usernameField:'email',
         passwordField:'password',
         passReqToCallback: true
-
     }, function(req,email,password,done){
 
         User.findOne({'local.email':email}, function(err,user){
             if(err) return done(err)
-            if(user) return done(null,false,req.flash('signIn','Someone is already using that email'))
+            if(user) return done(null,false,req.flash('signupMessage','Someone is already using that email'))
 
         var newUser = new User()
         newUser.local.name = req.body.name
@@ -35,7 +34,6 @@ var passport = require('passport'),
 
             if(err) return console.log(err)
             return done(null,newUser,null)
-
             })
         })
     }))
