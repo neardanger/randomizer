@@ -5,8 +5,13 @@
 }
 
 #sign_up{
-  margin-top: 175px !important;
-}    
+  margin-top: 100px !important;
+}
+
+#signup_title{
+  margin-top: 150px !important;
+
+}
 
 #bigLine{
   margin-bottom: 250px !important;

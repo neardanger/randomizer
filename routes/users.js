@@ -25,7 +25,7 @@ var express = require('express'),
             res.render('signup',{message: req.flash('signIn'),user:req.user}) 
         })
         .post(passport.authenticate('local-signup',{
-            successRedirect : '/signup',
+            successRedirect : '/',
             failureRedirect : '/signup'
 
         }))

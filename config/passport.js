@@ -24,7 +24,7 @@ var passport = require('passport'),
 
         User.findOne({'local.email':email}, function(err,user){
             if(err) return done(err)
-            if(user) return done(null,false,req.flash('signupMessage','Someone is already using that email'))
+            if(user) return done(null,false,req.flash('signIn','Someone is already using that email'))
 
         var newUser = new User()
         newUser.local.name = req.body.name
