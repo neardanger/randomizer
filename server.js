@@ -11,6 +11,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
+    passportConfig = require('./config/passport')
     request = require('request'),
     userRoutes = require('./routes/users.js')
     giftRoutes = require('./routes/gifts.js')
@@ -21,13 +22,16 @@ app.use('/public',express.static(path.join(__dirname,'public')))
 
 
 app.use(logger('dev'))
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(cookieParser())
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(session({
     secret:'dank memes',
     cookie:{_expires: 6000000}
 }))
 
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())

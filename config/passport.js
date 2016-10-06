@@ -13,8 +13,8 @@ var passport = require('passport'),
             done(err,user)
         })
     })
-
-    passport.use('local-signup',new LocalStrategy({
+    //Signing in
+    passport.use('local-signup', new LocalStrategy({
 
         usernameField:'email',
         passwordField:'password',
@@ -28,8 +28,9 @@ var passport = require('passport'),
 
         var newUser = new User()
         newUser.local.name = req.body.name
-        newUser.local.email = req.body.email
+        newUser.local.email = email
         newUser.local.password = newUser.generateHash(password)
+        newUser.local.birthday = req.body.birthday
         newUser.save(function(err){
 
             if(err) return console.log(err)

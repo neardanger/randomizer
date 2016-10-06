@@ -11,13 +11,9 @@
   <div class="row">
     <form action="/signup" method="post" class="col s12">
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s12">
           <input name="name" id="first_name" type="text" class="form-control">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input name="name" id="last_name" type="text" class="form-control">
-          <label for="last_name">Last Name</label>
+          <label for="first_name">Name</label>
         </div>
       </div>
       <div class="row">
@@ -34,11 +30,11 @@
       </div>
         <div class="date-picker" id="dp1">
         <label class="double1" for="dp1">Birthdate</label>
-        <input type="date" class="datepicker">
+        <input name="birthday" type="date" class="datepicker">
         </div>
         <div class="row">
           <div class="col s12">
-           <a href="#" id="sign_up2" class="btn-large waves-effect waves-light teal lighten-1">Submit</a>
+           <button id="sign_up2" class="btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">Submit</button>
            </div>
         </div>
     </form>
