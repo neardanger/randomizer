@@ -9,7 +9,7 @@ var express = require('express'),
 
     giftRouter.route('/gifts/:id', isLoggedIn)
         .post(giftCtrl.createGift)
-        .put(giftCtrl.patch)
+        .put(giftCtrl.update)
         .get(giftCtrl.show)
         .delete(giftCtrl.destroy)
 

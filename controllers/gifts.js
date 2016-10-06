@@ -34,7 +34,7 @@ module.exports={
         })
     },
 
-    patch: function(req,res){
+    update: function(req,res){
         Gift.findOne({_id:req.params.id},req.body,function(err,gift){
             if(err) return console.log(err)
 

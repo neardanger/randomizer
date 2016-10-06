@@ -1,7 +1,9 @@
 var express = require('express'),
     passport = require('passport'),
     userRouter = express.Router(),
-    userCtrl = require('../controllers/users.js')
+    userCtrl = require('../controllers/users.js'),
+    User = require('../models/User.js')
+    Gift = require('../models/Gift.js')
 
 
     userRouter.route('/users')
@@ -29,7 +31,7 @@ var express = require('express'),
         }))
     userRouter.route('/login')
         .get(function(req,res){
-            
+
         })
 
 
