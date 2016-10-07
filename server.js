@@ -23,8 +23,8 @@ app.use('/public',express.static(path.join(__dirname,'public')))
 
 app.use(logger('dev'))
 app.use(cookieParser())
-app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 app.use(session({
     secret:'dank memes',
     cookie:{_expires: 6000000}

@@ -22,7 +22,7 @@ var express = require('express'),
 
     userRouter.route('/signup')
         .get(function(req,res){
-            res.render('signup',{message: req.flash('signIn'),user:req.user}) 
+            res.render('signup',{message: req.flash('signupMessage'),user:req.user}) 
         })
         .post(passport.authenticate('local-signup',{
             successRedirect : '/',

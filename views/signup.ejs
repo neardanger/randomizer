@@ -1,6 +1,11 @@
 
       <div class="col-s12" id="signup_title">
         <h1 class="white-text text-lighten-2">Sign Up</h1>
+        <% if(message.length > 0){%>
+        <div class="alert alert-danger">
+          <%=message%>
+          </div>
+      <% } %>
       </div>
 
     
@@ -30,7 +35,7 @@
       </div>
         <div class="date-picker" id="dp1">
         <label class="double1" for="dp1">Birthdate</label>
-        <input name="birthday" type="date" class="datepicker">
+        <input type="date" class="datepicker" name="birthday" required>
         </div>
         <div class="row">
           <div class="col s12">
