@@ -1,11 +1,13 @@
 
       <div class="col-s12" id="signup_title">
+       
         <h1 class="white-text text-lighten-2">Sign Up</h1>
         <% if(message.length > 0){%>
         <div class="alert alert-danger">
           <%=message%>
           </div>
       <% } %>
+      
       </div>
 
     
@@ -14,37 +16,40 @@
   
   <div class ="container" id="sign_up">
   <div class="row">
+    
     <form action="/signup" method="post" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input name="name" id="first_name" type="text" class="form-control">
+          <input name="name" id="first_name" type="text" class="form-control" required>
           <label for="first_name">Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input name="password" id="password" type="password" class="form-control">
+          <input name="password" id="password" type="password" class="form-control" required>
           <label for="password">Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input name="email" id="email" type="email" class="form-control">
+          <input name="email" id="email" type="email" class="form-control" required>
           <label for="email">Email</label>
         </div>
       </div>
-        <div class="date-picker" id="dp1">
-        <label class="double1" for="dp1">Birthdate</label>
-        <input type="date" class="datepicker" name="birthday" required>
-        </div>
+        <div class="row">
+           <label for="birthday1">Birthday (Optional)</label>
+        <input name="birthday1" id="birthday1" type="date" class="datepicker" required>
+    </div>
+    </div>
         <div class="row">
           <div class="col s12">
            <button id="sign_up2" class="btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">Submit</button>
            </div>
         </div>
-    </form>
+        </form>
   </div>
-  </div>
+
+  
 
 
         

@@ -18,8 +18,9 @@ var passport = require('passport'),
 
         usernameField:'email',
         passwordField:'password',
+        birthdayField:'birthday',
         passReqToCallback: true
-    }, function(req,email,password,done){
+    }, function(req,email,password,birthday,done){
 
         User.findOne({'local.email':email}, function(err,user){
             if(err) return done(err)
