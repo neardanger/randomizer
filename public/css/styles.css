@@ -92,6 +92,11 @@ html{
 
 
 
+div.input-field.col.s12{
+  float: right;
+  margin-right: 25px !important;
+}
+
 
 
 
