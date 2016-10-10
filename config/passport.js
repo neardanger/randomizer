@@ -18,9 +18,8 @@ var passport = require('passport'),
 
         usernameField:'email',
         passwordField:'password',
-        birthdayField:'birthday',
         passReqToCallback: true
-    }, function(req,email,password,birthday,done){
+    }, function(req,email,password,done){
 
         User.findOne({'local.email':email}, function(err,user){
             if(err) return done(err)
@@ -30,7 +29,6 @@ var passport = require('passport'),
         newUser.local.name = req.body.name
         newUser.local.email = email
         newUser.local.password = newUser.generateHash(password)
-        newUser.local.birthday = req.body.birthday
         newUser.save(function(err){
 
             if(err) return console.log(err)

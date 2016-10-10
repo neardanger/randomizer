@@ -6,8 +6,7 @@ var mongoose = require('mongoose'),
         local:{
             name:String,
             email:String,
-            password:String,
-            birthday: String
+            password:String
         },
 
         facebook:{
