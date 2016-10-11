@@ -2,9 +2,8 @@ var express = require('express'),
     passport = require('passport'),
     userRouter = express.Router(),
     userCtrl = require('../controllers/users.js'),
-    User = require('../models/User.js'),
-    Gift = require('../models/Gift.js')
-
+    User = require('../models/User.js')
+   
 
     // userRouter.route('/users')
     //     .get(userCtrl.index)
