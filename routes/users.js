@@ -2,25 +2,34 @@ var express = require('express'),
     passport = require('passport'),
     userRouter = express.Router(),
     userCtrl = require('../controllers/users.js'),
-    User = require('../models/User.js')
+    User = require('../models/User.js'),
     Gift = require('../models/Gift.js')
 
 
-    userRouter.route('/users')
-        .get(userCtrl.index)
-        .post(userCtrl.create)
+    // userRouter.route('/users')
+    //     .get(userCtrl.index)
+    //     .post(userCtrl.create)
 
-    userRouter.route('/users/:id')
-        .get(userCtrl.show)
-        .delete(userCtrl.destroy)
-        .patch(userCtrl.patch)
+    // userRouter.route('/users/:id')
+    //     .get(userCtrl.show)
+    //     .delete(userCtrl.destroy)
+    //     .patch(userCtrl.patch)
 
     userRouter.route('/')
         .get(function(req,res){
             res.render('index',{user: req.user})
         })
+      
+     userRouter.route('/login')
+        .get(function(req,res){
+            res.render('login',{message:req.flash('loginMessage')})
+        })
+        .post(passport.authenticate('local-login',{
+            successRedirect: '/profile',
+            failureRedirect: '/login'
+        }))
 
-    userRouter.route('/signup')
+        userRouter.route('/signup')
         .get(function(req,res){
             res.render('signup',{message: req.flash('signupMessage'),user:req.user}) 
         })
@@ -30,18 +39,42 @@ var express = require('express'),
 
         }))
 
-    userRouter.route('/login')
-        .get(function(req,res){
-            res.render('login',{message:req.flash('loginMessage'),user:req.user})
-        })
-        .post(passport.authenticate('local-login',{
-            successRedirect:'/profile',
-            failureRedirect:'/login'
-        }))
-
-    userRouter.get('/profile',isLoggedIn,function(req,res){
+         userRouter.get('/profile',isLoggedIn,function(req,res){
         res.render('profile',{user:req.user})
     })
+
+    userRouter.get('/update',isLoggedIn,function(req,res){
+        res.render('update',{user:req.user})
+    })
+
+    userRouter.patch('/profile/:id',function(req,res){
+        console.log(req.body)
+        User.findOneAndUpdate({_id:req.params.id},req.body,{new:true},function(err,user){
+            if(err) console.log (err)
+        res.json({success:"You're through",user: user})
+        console.log(user)
+        })
+    })
+
+    userRouter.delete('/profile/:id',function(req,res){
+        User.findOneAndRemove({_id:req.params.id}, function(err){
+            if(err){
+            console.log(err)
+            res.json({success:false,message:"Failed to delete"})
+            }else{
+                res.json({sucess:"",message:"Deleted"})
+            }
+        })
+    })
+
+
+    function isLoggedIn(req,res,next){
+        if(req.isAuthenticated()) return next()
+        res.render('login',{message:"Please log into your profile"})
+    }
+
+
+ //Adding profile update cause this goober didn't have it'
 
     userRouter.get('/logout',function(req,res){
         req.logout()
@@ -49,11 +82,20 @@ var express = require('express'),
     })
 
 
-        function isLoggedIn(req,res,next) {
-         if (req.isAuthenticated()) return next()
-         res.redirect('/login')
-}
+   
+
     
+
+   
+
+    
+
+
+
+
+   
+
+
 
 
 
