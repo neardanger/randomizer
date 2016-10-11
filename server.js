@@ -23,8 +23,11 @@ app.use('/public',express.static(path.join(__dirname,'public')))
 
 app.use(logger('dev'))
 app.use(cookieParser())
-app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+
+app.set('view engine','ejs')
+
 app.use(session({
     secret:'dank memes',
     cookie:{_expires: 6000000}
@@ -37,7 +40,7 @@ app.use(passport.session())
 app.use(flash())
 
 
-app.set('view engine','ejs')
+
 app.use(ejsLayouts)
 
 

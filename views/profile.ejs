@@ -1,0 +1,30 @@
+
+
+<div class ="container">
+  <div class="row">
+    <table class="responsive-table">
+        <thead>      
+    <h3 id="profile_id"><%= user.local.name || user.facebook.name %>'s Profile</h3></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Name:</td>
+            <td><%=user.local.name || user.facebook.name%></td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><%=user.local.email || user.facebook.email%></td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td><%=user.local.password || user.facebook.token%></td>
+          </tr>
+        </tbody>
+      </table>   
+      </div>
+      </div>
+        
+           
+<script type="text/javascript">
+  var user = <%-JSON.stringify(user)%>
+</script>

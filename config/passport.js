@@ -49,8 +49,6 @@ var passport = require('passport'),
             if(err) return done(err)
             if(!user) return done (null,false,req.flash('loginMessage','That user does not exist!'))
             if(!user.validPassword(password)) return done(null,false,req.flash('loginMessage','That is not the correct password'))
-
-
         })
     }))
 

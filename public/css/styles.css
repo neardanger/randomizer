@@ -13,6 +13,18 @@
 
 }
 
+#log_in{
+  margin-top:100px !important;
+}
+
+#login_title{
+margin-top:150px !important;
+}
+
+#profile_layout{
+  margin-top:100px !important;
+}
+
 #bigLine{
   margin-bottom: 250px !important;
   height: 10px !important;
@@ -25,15 +37,6 @@
   padding-top: 0px;
 }
 
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
 
   
 nav.teal.lighten-1{
@@ -96,6 +99,15 @@ div.input-field.col.s12{
   float: right;
   margin-right: 25px !important;
 }
+
+ body {
+     display: flex !important;
+     min-height: 100vh !important;
+     flex-direction: column !important;
+ }
+ main {
+     flex: 1 0 auto !important;
+ }
 
 
 

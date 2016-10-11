@@ -17,7 +17,7 @@ var express = require('express'),
 
     userRouter.route('/')
         .get(function(req,res){
-            res.render('index')
+            res.render('index',{user: req.user})
         })
 
     userRouter.route('/signup')
@@ -25,22 +25,34 @@ var express = require('express'),
             res.render('signup',{message: req.flash('signupMessage'),user:req.user}) 
         })
         .post(passport.authenticate('local-signup',{
-            successRedirect : '/',
+            successRedirect : '/profile',
             failureRedirect : '/signup'
 
         }))
+
     userRouter.route('/login')
         .get(function(req,res){
-
+            res.render('login',{message:req.flash('loginMessage'),user:req.user})
         })
+        .post(passport.authenticate('local-login',{
+            successRedirect:'/profile',
+            failureRedirect:'/login'
+        }))
+
+    userRouter.get('/profile',isLoggedIn,function(req,res){
+        res.render('profile',{user:req.user})
+    })
+
+    userRouter.get('/logout',function(req,res){
+        req.logout()
+        res.redirect('/')
+    })
 
 
-
-
-        function isLoggedIn(res,req,next){
-            if(req.isAuthenticated()) return next()
-            res.redirect('/signup')
-        }
+        function isLoggedIn(req,res,next) {
+         if (req.isAuthenticated()) return next()
+         res.redirect('/login')
+}
     
 
 

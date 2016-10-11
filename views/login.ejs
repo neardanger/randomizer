@@ -1,6 +1,5 @@
-
-      <div class="col-s12" id="signup_title">
-        <h1 class="white-text text-lighten-2">Sign Up</h1>
+<div class="col-s12" id="login_title">
+        <h1 class="white-text text-lighten-2">Login</h1>
         <% if(message.length > 0){%>
         <div class="alert alert-danger">
           <%=message%>
@@ -11,11 +10,9 @@
 
     
   
-  
-  
-  <div class ="container" id="sign_up">
+  <div class ="container" id="log_in">
   <div class="row">
-    <form action="/signup" method="post" class="col s12">
+    <form action="/login" method="post" class="col s12">
     <div class="row">
         <div class="input-field col s12">
           <i class="material-icons prefix">email</i>
@@ -30,21 +27,14 @@
           <label for="password">Password</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">account_circle</i>
-          <input name="name" id="first_name" type="text" class="form-control" required>
-          <label for="first_name">Name</label>
-        </div>
-      </div>
         </div>
         <div class="row">
           <div class="col s12">
-           <button id="sign_up2" class="btn-large waves-effect waves-light teal lighten-1" type="submit" name="action">Submit</button>
+           <button id="sign_up3" class="btn-large waves-effect waves-light teal lighten-1" name="action" type="submit">Submit</button>
            </div>
-        </div>
-        </form>
-  </div>
+            </div>
+                </form>
+                    </div>
 
   
 
