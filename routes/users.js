@@ -38,6 +38,11 @@ var express = require('express'),
 
         }))
 
+        userRouter.route('/gifts')
+            .get(function(req,res){
+                res.render('gifts',{user:req.user})
+            })
+
          userRouter.get('/profile',isLoggedIn,function(req,res){
         res.render('profile',{user:req.user})
     })

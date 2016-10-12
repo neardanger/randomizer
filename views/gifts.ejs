@@ -1,0 +1,79 @@
+ <div id="gift_page" class="container">
+<div>
+        <button id="roll" type="button" class="waves-effect waves-light btn-large">Roll The Dice</button>
+        </div>
+      <div class="col s4">
+        <div class="section">
+            <h3>Gift 1</h3>
+              <div class="card small">
+    <!-- Card Content -->
+    <img id="box-1" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+        <p id="name-1"></p>
+  </div>
+      </div>
+      <div class="col s4">
+        <div class="section">
+            <h3>Gift 2</h3>
+              <div class="card small">
+    <!-- Card Content -->
+     <img id="box-2" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+        <p id="name-2"></p>
+  </div>
+            </div>
+      </div>
+      <div class="col s4">
+       <div class="section">
+            <h3>Gift 3</h3>
+              <div class="card small">
+    <!-- Card Content -->
+     <img id="box-3" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+        <p id="name-3"></p>
+  </div>
+            </div>
+      </div>
+    </div>
+    
+
+<script type="text/javascript">
+
+  var giftDank = []
+
+
+  giftDank[0] = sessionStorage.getItem('gift1');
+  giftDank[1] = sessionStorage.getItem('gift2');
+  giftDank[2] = sessionStorage.getItem('gift3');
+
+  $( ".progress" ).hide(); //hide load bar
+  $( "#checkout" ).hide(); //hide checkout button
+
+
+
+  var $roll = $('#roll')
+    $roll.on('click',function() {
+
+      $( ".progress" ).show(); //show load bar
+      $( "#checkout" ).show(); //show checkout button
+
+      $.ajax({
+        url: "/api",
+        method: 'GET'
+      }).done(function(result) {
+          $( ".progress" ).hide(); //hide load bar
+          $( "#checkout" ).show(); //show checkout button
+          var totalPrice = 0
+          for (var i = 1; i < 5; i++) {
+            $('#box-'+i).attr('src', result[i-1].mediumImage);
+            $('#name-'+i).text(result[i-1].name);
+            totalPrice += result[i-1].salePrice
+            console.log(result[i-1]);
+            giftDank[i-1] = result[i-1].itemId
+          }
+          $('#total-price').text('$'+(Math.ceil(totalPrice-15)))
+      });
+    })
+
+
+
+  
+
+</script>

@@ -13,8 +13,10 @@ var express = require('express'),
     passport = require('passport'),
     passportConfig = require('./config/passport')
     request = require('request'),
-    userRoutes = require('./routes/users.js')
-    giftRoutes = require('./routes/gifts.js')
+    userRoutes = require('./routes/users.js'),
+    giftRoutes = require('./routes/gifts.js'),
+    apiRoutes = require('./routes/api.js')
+
 
 
 
@@ -66,4 +68,5 @@ app.listen(port,function(req,res,next){
 
 app.use('/',userRoutes)
 app.use('/',giftRoutes)
+app.get('/api',apiRoutes)
 
