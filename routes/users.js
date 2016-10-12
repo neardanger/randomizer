@@ -69,7 +69,7 @@ var express = require('express'),
 
     function isLoggedIn(req,res,next){
         if(req.isAuthenticated()) return next()
-        res.render('login',{message:"Please log into your profile"})
+        res.redirect('/login')
     }
 
 
