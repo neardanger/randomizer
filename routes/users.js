@@ -21,7 +21,7 @@ var express = require('express'),
       
      userRouter.route('/login')
         .get(function(req,res){
-            res.render('login',{message:req.flash('loginMessage')})
+            res.render('login',{message:req.flash('loginMessage'), user:req.user})
         })
         .post(passport.authenticate('local-login',{
             successRedirect: '/profile',
