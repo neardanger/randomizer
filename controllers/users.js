@@ -2,23 +2,23 @@ var User = require('../models/User.js')
 
 module.exports = {
     index: function(req,res){
-        User.find({},function(err,user){
+        User.find({},function(err,users){
             if(err) return console.log(err)
-            res.json(user)
+            res.json(users)
         })
     },
 
     create: function(req,res){
-        User.create(req.body,function(err,user){
+        User.create(req.body,function(err,users){
             if(err) return console.log(err)
-            res.json(user)
+            res.json(users)
         })
     },
 
     show: function(req,res){
-        User.findOne({_id:req.params.id},function(err,user){
+        User.findOne({_id:req.params.id},function(err,users){
             if(err) return console.log(err)
-            res.json(user)
+            res.json(users)
         })
     },
 

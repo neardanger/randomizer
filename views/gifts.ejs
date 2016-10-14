@@ -1,5 +1,5 @@
  <div id="gift_page" class="container">
-<div>
+        <div>
         <button id="roll" type="button" class="waves-effect waves-light btn-large">Roll The Dice</button>
         </div>
       <div class="col s4">
@@ -32,6 +32,9 @@
             </div>
       </div>
     </div>
+        <div>
+         <button id="save" type="button" class="waves-effect waves-light btn-large">Save Items</button>
+        </div>
     
 
 <script type="text/javascript">
@@ -44,29 +47,29 @@
   giftDank[2] = sessionStorage.getItem('gift3');
 
   $( ".progress" ).hide(); //hide load bar
-  $( "#checkout" ).hide(); //hide checkout button
+  $( "#save" ).hide(); //hide checkout button
 
 
 
   var $roll = $('#roll')
     $roll.on('click',function() {
 
-      $( ".progress" ).show(); //show load bar
-      $( "#checkout" ).show(); //show checkout button
+      $( ".progress" ).show(); //show
+      $( "#save" ).show(); 
 
       $.ajax({
         url: "/api",
         method: 'GET'
-      }).done(function(result) {
-          $( ".progress" ).hide(); //hide load bar
-          $( "#checkout" ).show(); //show checkout button
+      }).done(function(data) {
+          $( ".progress" ).hide(); //hide
+          $( "#save" ).show(); 
           var totalPrice = 0
-          for (var i = 1; i < 5; i++) {
-            $('#box-'+i).attr('src', result[i-1].mediumImage);
-            $('#name-'+i).text(result[i-1].name);
-            totalPrice += result[i-1].salePrice
-            console.log(result[i-1]);
-            giftDank[i-1] = result[i-1].itemId
+          for (var i = 1; i < 4; i++) {
+            $('#box-'+i).attr('src', data[i-1].mediumImage);
+            $('#name-'+i).text(data[i-1].name);
+            totalPrice += data[i-1].salePrice
+            console.log(data[i-1]);
+            giftDank[i-1] = data[i-1].itemId
           }
           $('#total-price').text('$'+(Math.ceil(totalPrice-15)))
       });
@@ -74,6 +77,27 @@
 
 
 
-  
+  var $save = $('#save')
+    $save.on('click',function() {
+      console.log("Items are saved");
+      var gift = {
+        gift1: giftDank[0],
+        gift2: giftDank[1],
+        gift3: giftDank[2]
+      }
+      if (user) {
+        $.ajax({
+          url: "/gifts/"+ user._id, // how do I get the id?
+          method: 'POST',
+          data: gift // does this array work as body, is it the same as req.body???
+        }).done(function(data) {
+          // modal for checkout that pulls from the database and makes a new API req.
+        });
+      }else {
+        window.location = '/login?gift1=' + giftDank[0] +'&'+ '/login?gift2=' + giftDank[1] +'&'+ '/login?gift3=' + giftDank[2]
+      }
+
+
+    })
 
 </script>

@@ -3,7 +3,7 @@ var express = require('express'),
     giftRouter = express.Router(),
     giftCtrl = require('../controllers/gifts.js')
 
-    giftRouter.route('/gifts')
+    giftRouter.route('/gifts', isLoggedIn)
         .get(giftCtrl.index)
         .post(giftCtrl.show)
 

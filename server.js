@@ -55,6 +55,10 @@ mongoose.connect(dbUrl,function(err){
     console.log("You are connected to the database!")
 })
 
+app.get('/gifts',function(req,res){
+    console.log(req.query)
+    res.render('gifts',{user:req.user})
+})
 
 
 

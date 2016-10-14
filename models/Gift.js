@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
-    Schema = mongoose.Schema
+     Schema = mongoose.Schema
 
 
 var giftSchema = new mongoose.Schema({
@@ -11,7 +11,7 @@ var giftSchema = new mongoose.Schema({
 })
 
 
-var Gift = mongoose.model('Gift',giftSchema)
+var Gift = mongoose.model('Gift', giftSchema)
 
 
 module.exports = Gift

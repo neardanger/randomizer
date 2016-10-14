@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    Gift = require('../models/Gift.js')
+    Gift = require('../models/Gift.js'),
     bcrypt = require('bcrypt-nodejs')
 
     var userSchema = new mongoose.Schema({
