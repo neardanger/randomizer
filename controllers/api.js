@@ -36,7 +36,7 @@ module.exports = {
         var randomizer2 = function(){return (Math.floor(Math.random() * (body.items.length)))}
         var vapeNation =  body.items[randomizer2()]
         data.push(vapeNation)
-    res.json(data)
+        res.json(data)
             })
           })
         })  
