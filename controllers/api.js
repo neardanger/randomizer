@@ -1,8 +1,7 @@
-var path = require('path')
+var Path = require('path')
 var request = require('request')
-var apiTems = ["2636","3920","3920_582507_583874", "4044_133012_1045881",
-  "4104", "4171_4191", "4096","4125_4161","1085632_1229464",
-  "4171_1015079"]
+var apiTems = ["2636","3920",
+  "4104", "4096"]
 
   var randomizer = function() {return (Math.floor(Math.random()*apiTems.length))} 
 

@@ -1,7 +1,7 @@
 var Gift = require('../models/Gift.js')
 var User = require('../models/User.js')
 
-module.exports={
+module.exports = {
 
     index: function(req,res){
         Gift.find({},function(err,gifts){
@@ -12,9 +12,9 @@ module.exports={
 
 
     show: function(req,res){
-        Gift.findOne({_id:req.params.id},function(err,gifts){
+        Gift.findOne({_id:req.params.id},function(err,gift){
             if(err) return console.log(err)
-            res.json(gifts)
+            res.json(gift)
         })
     },
 
@@ -58,5 +58,5 @@ module.exports={
             if(err) return console.log(err)
             res.json({success:true,message:'Gift was removed from the user'})
         })
-     }
+     },
  }

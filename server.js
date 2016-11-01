@@ -1,9 +1,6 @@
 var express = require('express'),
     app = express(),
     logger = require('morgan'),
-    cors = require('cors'),
-    path = require('path'),
-    bodyParser = require('body-parser'),
     ejs = require('ejs'),
     ejsLayouts = require('express-ejs-layouts'),
     mongoose = require('mongoose'),
@@ -12,10 +9,12 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport'),
     passportConfig = require('./config/passport')
-    request = require('request'),
     userRoutes = require('./routes/users.js'),
     giftRoutes = require('./routes/gifts.js'),
-    apiRoutes = require('./routes/api.js')
+    apiRoutes = require('./routes/api.js'),
+    path = require('path'),
+    request = require('request'),
+    bodyParser = require('body-parser')
 
 
 
@@ -55,10 +54,15 @@ mongoose.connect(dbUrl,function(err){
     console.log("You are connected to the database!")
 })
 
-app.get('/gifts',function(req,res){
+app.get('/gifts',isLoggedIn,function(req,res){
     console.log(req.query)
     res.render('gifts',{user:req.user})
 })
+
+function isLoggedIn(req,res,next) {
+  if (req.isAuthenticated()) return next()
+  res.redirect('/login')
+}
 
 
 
@@ -70,7 +74,7 @@ app.listen(port,function(req,res,next){
 
 //Advanced routes
 
-app.use('/',userRoutes)
-app.use('/',giftRoutes)
-app.get('/api',apiRoutes)
+app.use('/', userRoutes)
+app.use('/', giftRoutes)
+app.get('/api', apiRoutes)
 

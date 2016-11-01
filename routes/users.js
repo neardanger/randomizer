@@ -1,18 +1,24 @@
 var express = require('express'),
     passport = require('passport'),
     userRouter = express.Router(),
-    userCtrl = require('../controllers/users.js'),
-    User = require('../models/User.js')
-   
+    userCtrl = require('../controllers/users.js')
 
+//Admin Routes not implemented
     // userRouter.route('/users')
-    //     .get(userCtrl.index)
-    //     .post(userCtrl.create)
+    // .get(userCtrl.index)
+    // .post(userCtrl.create)
 
     // userRouter.route('/users/:id')
-    //     .get(userCtrl.show)
-    //     .delete(userCtrl.destroy)
-    //     .patch(userCtrl.patch)
+    // .patch(userCtrl.update)
+    // .get(userCtrl.show)
+    // .delete(userCtrl.destroy)
+
+
+    
+
+
+
+    //Need to protect these routes
 
     userRouter.route('/')
         .get(function(req,res){
@@ -38,10 +44,10 @@ var express = require('express'),
 
         }))
 
-        userRouter.route('/gifts')
-            .get(function(req,res){
-                res.render('gifts',{user:req.user})
-            })
+        userRouter.route('/gifts',isLoggedIn,function(req,res){
+            res.render('gifts', {user: req.user})
+        })
+              
 
          userRouter.get('/profile',isLoggedIn,function(req,res){
         res.render('profile',{user:req.user})

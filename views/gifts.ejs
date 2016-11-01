@@ -2,6 +2,9 @@
         <div>
         <button id="roll" type="button" class="waves-effect waves-light btn-large">Roll The Dice</button>
         </div>
+        <div class="progress">
+      <div class="indeterminate"></div>
+        </div>
       <div class="col s4">
         <div class="section">
             <h3>Gift 1</h3>
@@ -32,8 +35,12 @@
             </div>
       </div>
     </div>
+    <div class="total-price">
+      <h3 id="total-price"><h3>
+      </div>
         <div>
          <button id="save" type="button" class="waves-effect waves-light btn-large">Save Items</button>
+        </div>
         </div>
     
 
@@ -83,7 +90,7 @@
       var gift = {
         gift1: giftDank[0],
         gift2: giftDank[1],
-        gift3: giftDank[2]
+        gift3: giftDank[2],
       }
       if (user) {
         $.ajax({
