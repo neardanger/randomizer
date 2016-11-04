@@ -17,6 +17,14 @@ var express = require('express'),
     bodyParser = require('body-parser')
 
 
+    var ampl = require('ampl'),
+    markdownString = "readme.md"
+    cssStyle = "./public/css/styles.css"
+    ampl.parse(markdownString, cssStyle, function(ampHtml){
+        console.log(ampHtml)
+    });
+
+
 
 
 app.use('/public', express.static(path.join(__dirname,'public')))
