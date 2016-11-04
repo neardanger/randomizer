@@ -2,10 +2,11 @@ var express = require('express'),
     passport = require('passport'),
     giftRouter = express.Router(),
     giftCtrl = require('../controllers/gifts.js')
+    
 
     giftRouter.route('/gifts')
         .get(giftCtrl.index)
-        .post(giftCtrl.show)
+        .post(giftCtrl.createGift)
 
     giftRouter.route('/gifts/:id', isLoggedIn)
         .post(giftCtrl.createGift)
