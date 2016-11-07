@@ -39,6 +39,8 @@ app.use(bodyParser.json())
 
 app.use(session({
     secret:'dank memes',
+    resave:true,
+    saveUninitialized:true,
     cookie:{_expires: 6000000}
 }))
 
@@ -58,6 +60,7 @@ app.use(ejsLayouts)
 var port = process.env.PORT || 8000
 var dbUrl = process.env.MLAB_URI || 'mongodb://localhost/giphtur'
 
+mongoose.Promise = global.Promise;
 mongoose.connect(dbUrl,function(err){
     if(err) return console.log('Cannot connect to the server:(')
     console.log("You are connected to the database!")
