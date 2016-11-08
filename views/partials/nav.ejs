@@ -4,7 +4,7 @@
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Giphtur</a>
       <ul class="right hide-on-med-and-down">
          <% if(user){%>
-        <li><a>Welcome, <%=user.local.name%></a></li>
+        <li><a>Logged in as, <%=user.local.name%></a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/profile">Profile</a></li>
         <li><a href="/gifts">Gifts</a></li>
@@ -21,7 +21,7 @@
       <ul id="nav-mobile" class="side-nav">
 
         <% if(user) {%>
-        <li><a>Welcome, <%=user.local.name%></a></li>
+        <li><a>Logged in as, <%=user.local.name%></a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/profile">Profile</a></li>
         <li><a href="/gifts">Gifts</a></li>

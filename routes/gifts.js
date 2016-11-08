@@ -4,7 +4,7 @@ var express = require('express'),
     giftCtrl = require('../controllers/gifts.js')
     
 
-    giftRouter.route('/gifts')
+    giftRouter.route('/gifts/')
         .get(giftCtrl.index)
         .post(giftCtrl.createGift)
 

@@ -41,6 +41,22 @@ module.exports = {
             })
           })
         })  
+     },
+
+     show2: function(req,res){
+         var trending = []
+            for(var i=0;i<3;i++){
+                trending[i] = "http://api.walmartlabs.com/v1/trends?format=json" + trending[randomizer()] + "&apiKey="  + "9nh57qxqy5gu6sc4xtewsydr"
+            }
+            var data2 = []
+
+            request({url: trending[0],json:true},function(error,response,body){
+                var randomizer2 = function(){
+                    return (Math.floor(Math.random() * (body.items.length - 0)) + 0)
+                }
+                var cigarNation = body.items[randomizer2()]
+                data2.push(cigarNation)
+          })
      }
   }
   
