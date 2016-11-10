@@ -3,21 +3,9 @@ var express = require('express'),
     userRouter = express.Router(),
     userCtrl = require('../controllers/users.js')
 
-//Admin Routes not implemented
-    // userRouter.route('/users')
-    // .get(userCtrl.index)
-    // .post(userCtrl.create)
-
-    // userRouter.route('/users/:id')
-    // .patch(userCtrl.update)
-    // .get(userCtrl.show)
-    // .delete(userCtrl.destroy)
 
 
     
-
-
-
     //Need to protect these routes
 
     userRouter.route('/')
@@ -53,14 +41,10 @@ var express = require('express'),
         res.render('profile',{user:req.user})
     })
 
-    userRouter.get('/update',isLoggedIn,function(req,res){
-        res.render('update',{user:req.user})
-    })
-
     userRouter.patch('/profile/:id',function(req,res){
         console.log(req.body)
         User.findOneAndUpdate({_id:req.params.id},req.body,{new:true},function(err,user){
-            if(err) console.log (err)
+        if(err) console.log (err)
         res.json({success:"You're through",user: user})
         console.log(user)
         })
@@ -76,6 +60,20 @@ var express = require('express'),
             }
         })
     })
+
+    userRouter.get('/update',isLoggedIn,function(req,res){
+        res.render('update',{user:req.user})
+    })
+
+    
+
+    
+
+
+  
+
+
+    /////////////////////
 
 
     function isLoggedIn(req,res,next){

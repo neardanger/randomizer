@@ -4,7 +4,9 @@ var apiTems = ["2636","3920","3920_582507_583874", "4044_133012_1045881",
   "4104", "4171_4191", "4096","4125_4161","1085632_1229464",
   "4171_1015079"]
 
-  var randomizer = function (){return (Math.floor(Math.random() * (apiTems.length - 0)) + 0)} 
+  var randomizer = function()
+  
+  {return (Math.floor(Math.random() * (apiTems.length - 0)) + 0)} 
 
 
 
@@ -15,7 +17,7 @@ module.exports = {
 
     show: function(req,res){
         var apiTemsArray = []
-        for(var i = 0;i < 4; i++){
+        for(var i = 0;i < 3; i++){
             apiTemsArray[i] = "http://api.walmartlabs.com/v1/paginated/items?format=json&category" + apiTems[randomizer()] +"&apiKey="+"9nh57qxqy5gu6sc4xtewsydr"
         }
     var data = []
@@ -41,22 +43,26 @@ module.exports = {
             })
           })
         })  
-     },
+    },
 
-     show2: function(req,res){
-         var trending = []
-            for(var i=0;i<3;i++){
-                trending[i] = "http://api.walmartlabs.com/v1/trends?format=json" + trending[randomizer()] + "&apiKey="  + "9nh57qxqy5gu6sc4xtewsydr"
-            }
-            var data2 = []
+    show2: function(req,res){
+        var trend = []
+        for(var i=0;i<2;i++){
+            trend[i] = "http://api.walmartlabs.com/v1/trends?apiKey=9nh57qxqy5gu6sc4xtewsydr&format=json"
+        }
+        var result = []
 
-            request({url: trending[0],json:true},function(error,response,body){
-                var randomizer2 = function(){
-                    return (Math.floor(Math.random() * (body.items.length - 0)) + 0)
-                }
-                var cigarNation = body.items[randomizer2()]
-                data2.push(cigarNation)
-          })
-     }
-  }
-  
+
+        request({url:trend[0],json:true}, function(error,response,body){
+            randomizer2 = function (){return (Math.floor(Math.random() * (body.items.length - 0)) + 0)}
+            var trendNation = body.items[randomizer2()]
+            result.push(trendNation)
+
+            res.json(result)
+        })
+
+        
+    }
+    
+}
+

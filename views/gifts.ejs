@@ -46,12 +46,12 @@
 
 <script type="text/javascript">
 
-  var giftDank = []
+  var giftID = []
 
 
-  giftDank[0] = sessionStorage.getItem('gift1');
-  giftDank[1] = sessionStorage.getItem('gift2');
-  giftDank[2] = sessionStorage.getItem('gift3');
+  giftID[0] = sessionStorage.getItem('gift1');
+  giftID[1] = sessionStorage.getItem('gift2');
+  giftID[2] = sessionStorage.getItem('gift3');
 
   $( ".progress" ).hide(); //hide load bar
   $( "#save" ).hide(); //hide checkout button
@@ -78,7 +78,7 @@
             $('#sale-'+i).text(data[i-1].salePrice);
             totalPrice += data[i-1].msrp
             console.log(data[i-1]);
-            giftDank[i-1] = data[i-1].itemId
+            giftID[i-1] = data[i-1].itemId
           }
       });
     })
@@ -89,27 +89,32 @@
     $save.on('click',function() {
       console.log("Items are saved");
       var gift = {
-        gift1: giftDank[0],
-        gift2: giftDank[1],
-        gift3: giftDank[2],
+        gift1: giftID[0],
+        gift2: giftID[1],
+        gift3: giftID[2],
       }
       if (user) {
         $.ajax({
-          url: "/gifts/"+ user._id,
+          url: "/savedgifts/" + user._id,
           method: 'POST',
-          data: JSON.stringify(gift),
+          data: JSON.stringify(user.gifts),
           contentType: 'application/json'
         }).done(function(data) {
           Materialize.toast('Gifts saved',3000)
-          window.location = "/gifts"
-         
+        window.location ='/savedgifts'
+        console.log(gift)
         });
       }else {
-        Materialize.toast("You have been dank meme'd")
-        window.location = '/profile?gift1=' + giftDank[0] +'&'+ '/profile?gift2=' + giftDank[1] +'&'+ '/profile?gift3=' + giftDank[2]
+          window.location = '/savedgifts?gift1=' + giftID[0] +'&'+ '/savedgifts?gift2=' + giftID[1] +'&'+ '/savedgifts?gift3=' + giftID[2]
+        Materialize.toast("You have bgiftID meme'd")
       }
 
 
     })
 
+
+
 </script>
+
+
+

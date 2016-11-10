@@ -11,41 +11,54 @@
           <h5 class="header col s12 light">Give people random gifts.</h5>
         </div>
         <div class="row center">
-          <button data-target="modal1" id="get-started" class="btn-large modal-trigger waves-effect waves-light teal lighten-1">Get Started</a>
+          <button result-target="modal1" id="get-started" class="btn-large modal-trigger waves-effect waves-light teal lighten-1">Get Started</a>
         </div>
         <br><br>
       </div>
     </div>
   </div>
 
-    <div class="row" id="bigLine">
-        <div class="col s12">
-          <div class="card">
-            <div class="card-image">
-               <img id="box-index" src="" alt="" />
-                 <p id="name-index"></p>
-              <span class="card-title">Gift of the day</span>
-            </div>
-            <div class="card-content">
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-            
-      <div class="col s4">
-        <div class="card-panel teal">
-          <span class="white-text">Placeholder
-          </span>
-        </div>
-      </div>
-      <div class="col s4">
-        <div class="card-panel teal">
-          <span class="white-text">Placeholder
-          </span>
-        </div>
-      </div>
-    </div>
 
+   <div class="section">
+            <h3>Gift of the day</h3>
+              <div class="card small">
+    <!-- Card Content -->
+    <img class="giftofday" id="image-1" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+    <p id ="name-1"></p>
+    <p id ="sale-1"></p>
+  </div>
+      </div>
+
+
+<script type = "text/javascript">
+
+  var giftID = []
+
+
+  giftID[0] = sessionStorage.getItem('gift1');
+
+
+  $.ajax({
+        method:'GET',
+        url: "/api1",
+      }).done(function(result) {
+         var totalPrice = 0
+         for (var i = 1; i < 4; i++) {
+           
+            $('#image-'+i).attr('src', result[i-1].mediumImage);
+            $('#name-'+i).text(result[i-1].name);
+            $('#msrp-'+i).text(result[i-1].msrp);
+            $('#sale-'+i).text(result[i-1].salePrice);
+            totalPrice += result[i-1].msrp
+            console.log(result[i-1]);
+            giftID[i-1] = result[i-1].itemId
+          }
+         console.log("dank!")
+
+          })
+  
+        </script>
     
+    
+
     

@@ -14,6 +14,7 @@ module.exports = {
     show: function(req,res){
         Gift.findOne({_id:req.params.id},function(err,gift){
             if(err) return console.log(err)
+            console.log(gift)
             res.json(gift)
         })
     },
@@ -65,5 +66,3 @@ module.exports = {
 
  //Finite
 
-
-916-832-6489

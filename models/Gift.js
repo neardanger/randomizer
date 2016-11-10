@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
+    User = require('../models/User.js')
     Schema = mongoose.Schema
 
 

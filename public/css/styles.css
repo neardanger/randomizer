@@ -121,16 +121,25 @@ div.input-field.col.s12{
  }
 
  #box-1{
-   margin-top: 50px !important
+   margin-top: 40px !important
  }
 
  #box-2{
-   margin-top: 50px !important
+   margin-top: 40px !important
  }
 
  #box-3{
-   margin-top: 50px !important
+   margin-top: 40px !important
  }
+
+ .title{
+   margin-top: 100px;
+ }
+
+ .giftofday{
+   margin-top:40px;
+ }
+
 
 
 

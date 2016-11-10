@@ -6,4 +6,6 @@ var passport = require('passport'),
 
 apiRouter.get('/api', apiCtrl.show)
 
+apiRouter.get('/api1',apiCtrl.show2)
+
 module.exports = apiRouter

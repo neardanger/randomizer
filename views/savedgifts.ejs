@@ -1,0 +1,53 @@
+<div class="title">
+  <table>
+        <div class="container">
+    <div class="content center col m8 offset-m2 z-depth-2">
+
+
+
+      <div class="row" style="margin: 0 auto;">
+          <h5 class="card-panel teal lighten-2" id="heading" style="color: white;" href="#"><%=user.local.name%> Gifts</h5><br>
+        <div class="responsive-table ">
+           
+              <h5 class="heading center light"></h5>
+              <table>
+                  
+                <tbody>
+                    
+                  
+                     <th class="center">Dank memes</th>
+        
+                    <tr>
+                      
+                         <td class='center'><br><img class='center'><br></td>
+            
+                    </tr>
+                  </tbody>
+                </table>
+        
+        </div>
+      </div> <!-- /row -->
+    </div> <!-- /content center col -->
+</div> <!-- /container -->
+
+
+     <script>     
+  var user = <%-JSON.stringify(user)%>
+
+
+if(user){
+
+
+var list = []
+
+    $.ajax({
+        method:'GET',
+        url: "/savedgifts/:id",
+      }).done(function(data) {
+         console.log(user)
+
+          })
+      }
+</script>
+
+

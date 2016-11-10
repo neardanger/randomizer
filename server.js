@@ -1,4 +1,5 @@
 var express = require('express'),
+    cors = require('cors'),
     app = express(),
     logger = require('morgan'),
     ejs = require('ejs'),
@@ -15,16 +16,11 @@ var express = require('express'),
     path = require('path'),
     request = require('request'),
     bodyParser = require('body-parser')
+   
 
 
-    var ampl = require('ampl'),
-    markdownString = "readme.md"
-    cssStyle = "./public/css/styles.css"
-    ampl.parse(markdownString, cssStyle, function(ampHtml){
-        console.log(ampHtml)
-    });
 
-
+app.use(cors())
 
 
 app.use('/public', express.static(path.join(__dirname,'public')))
@@ -34,6 +30,7 @@ app.use(logger('dev'))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
+
 
 
 
@@ -71,6 +68,16 @@ app.get('/gifts',isLoggedIn,function(req,res){
     res.render('gifts',{user:req.user})
 })
 
+
+app.get('/savedgifts/:id',isLoggedIn,function(req,res){
+    console.log(req.query)
+    res.render('savedgifts',{user:req.user})
+})
+
+
+
+
+
 function isLoggedIn(req,res,next) {
   if (req.isAuthenticated()) return next()
   res.redirect('/login')
@@ -89,4 +96,5 @@ app.listen(port,function(req,res,next){
 app.use('/', userRoutes)
 app.use('/', giftRoutes)
 app.get('/api', apiRoutes)
+app.get('/api1',apiRoutes)
 
