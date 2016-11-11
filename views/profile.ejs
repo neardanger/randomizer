@@ -24,39 +24,4 @@
           </tr>
         </tbody>
       </table>   
-     <div class="container">
-    <div class="content center col m8 offset-m2 z-depth-2">
-
-
-
-      <script type="text/javascript">
-  var user = <%-JSON.stringify(user)%>
-</script>
-
-      <script>
-function getParameterByName(name, url) {
-  if (!url) url = window.location.href;
-  url = url.toLowerCase(); // This is just to avoid case sensitiveness
-  name = name.replace(/[\[\]]/g, "\\$&").toLowerCase();// This is just to avoid case sensitiveness for query parameter name
-  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-if(getParameterByName('gift1')){
-  // $('#p1').val(getParameterByName('product1'))
-  // $('#p2').val(getParameterByName('product2'))
-  // $('#p3').val(getParameterByName('product3'))
-  // $('#p4').val(getParameterByName('product4'))
-  sessionStorage.setItem('gift1', getParameterByName('gift1'));
-  sessionStorage.setItem('gift2', getParameterByName('gift2'));
-  sessionStorage.setItem('gift3', getParameterByName('gift3'));
-}
-</script>
-
-      
-      
-        
-        
+  
