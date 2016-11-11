@@ -11,9 +11,6 @@ var express = require('express'),
     })
 
 
-
-
-
     giftRouter.route('/savedgifts/',isLoggedIn)
         .get(giftCtrl.index)
         .post(giftCtrl.createGift)
@@ -21,7 +18,7 @@ var express = require('express'),
     giftRouter.route('/savedgifts/:id', isLoggedIn)
         .post(giftCtrl.createGift)
         .put(giftCtrl.update)
-        .get(giftCtrl.show)
+        .get(giftCtrl.show)//This gets the gift from the user
         .delete(giftCtrl.destroy)
 
 

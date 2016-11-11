@@ -12,7 +12,8 @@ module.exports = {
 
 
     show: function(req,res){
-        Gift.findOne({_id:req.params.id},function(err,gift){
+        Gift.findOne({_id:req.params.id},req.body,function(err,gift){
+            console.log(req.body)
             if(err) return console.log(err)
             console.log(gift)
             res.json(gift)
@@ -23,7 +24,6 @@ module.exports = {
         console.log(req.params.id)
         User.findOne({_id: req.params.id},function(err,user){
             if(err) throw err
-
             var newGift = new Gift(req.body)
             newGift._by = user
             newGift.save(function(err,gift){
@@ -61,7 +61,7 @@ module.exports = {
             if(err) throw err
             res.json({success:true,message:'Gift was removed from the user'})
         })
-     },
+     }
  }
 
  //Finite

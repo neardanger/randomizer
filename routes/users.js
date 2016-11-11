@@ -65,6 +65,11 @@ var express = require('express'),
         res.render('update',{user:req.user})
     })
 
+
+        
+
+
+
     
 
     

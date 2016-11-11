@@ -1,50 +1,54 @@
-<div class="title">
-  <table>
-        <div class="container">
-    <div class="content center col m8 offset-m2 z-depth-2">
 
 
+ <table class=row1 id="row1">
+        <thead>
+          <tr>
+             
+              <th data-field="price">Gifts</th>
+          </tr>
+        </thead>
 
-      <div class="row" style="margin: 0 auto;">
-          <h5 class="card-panel teal lighten-2" id="heading" style="color: white;" href="#"><%=user.local.name%> Gifts</h5><br>
-        <div class="responsive-table ">
-           
-              <h5 class="heading center light"></h5>
-              <table>
-                  
-                <tbody>
-                    
-                  
-                     <th class="center">Dank memes</th>
-        
-                    <tr>
-                      
-                         <td class='center'><br><img class='center'><br></td>
+        <tbody>
+          <tr>
+            <td><%=user.gifts%></td>
+            <td>
+          </tr>
+        </tbody>
+      </table>
             
-                    </tr>
-                  </tbody>
-                </table>
         
-        </div>
-      </div> <!-- /row -->
-    </div> <!-- /content center col -->
-</div> <!-- /container -->
-
-
+    
      <script>     
   var user = <%-JSON.stringify(user)%>
 
 
+
+
 if(user){
 
+    var giftID = []
 
-var list = []
+
+  giftID[0] = sessionStorage.getItem('gift1');
+  giftID[1] = sessionStorage.getItem('gift2');
+  giftID[2] = sessionStorage.getItem('gift3');
+
+
+var gift = {
+        gift1: giftID[0],
+        gift2: giftID[1],
+        gift3: giftID[2],
+      }
 
     $.ajax({
-        method:'GET',
+        method:'POST',
         url: "/savedgifts/:id",
+        data: JSON.stringify(user),
+        contentType:'application'
       }).done(function(data) {
+          .populate('user')
          console.log(user)
+         console.log(gift)
 
           })
       }
