@@ -20,17 +20,25 @@
 
 
    <div class="section">
-            <h3>Gift of the day</h3>
+            <h3>Trending Gift</h3>
+            <div id="progressing" class="progress">
+      <div class="indeterminate"></div>
+        </div>
               <div class="card small">
     <!-- Card Content -->
-    <img class="giftofday" id="image-1" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+    <img class="giftofday" id="image-1"   alt="" />
     <p id ="name-1"></p>
     <p id ="sale-1"></p>
+    
   </div>
       </div>
 
 
 <script type = "text/javascript">
+
+
+$(".progress").show();
+
 
   var giftID = []
 
@@ -42,6 +50,9 @@
         method:'GET',
         url: "/api1",
       }).done(function(result) {
+
+        $( ".progress" ).hide()
+
          var totalPrice = 0
          for (var i = 1; i < 4; i++) {
            

@@ -39,7 +39,7 @@
       </div>
     </div>
         <div>
-         <button id="save" type="button" class="waves-effect waves-light btn-large">Save Items</button>
+         <!--<button id="save" type="button" class="waves-effect waves-light btn-large">Save Items</button>-->
         </div>
         </div>
     
@@ -74,12 +74,12 @@
           for (var i = 1; i < 4; i++) {
             $('#box-'+i).attr('src', data[i-1].mediumImage);
             $('#name-'+i).text(data[i-1].name);
-            $('#msrp-'+i).text(data[i-1].msrp);
             $('#sale-'+i).text(data[i-1].salePrice);
             totalPrice += data[i-1].msrp
             console.log(data[i-1]);
             giftID[i-1] = data[i-1].itemId
           }
+          $('total-price').text('$' + (Math.ceil(totalPrice-15)))
       });
     })
 
