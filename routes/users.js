@@ -65,6 +65,14 @@ var express = require('express'),
         res.render('update',{user:req.user})
     })
 
+    userRouter.get('/auth/facebook',passport.authenticate('facebook',{
+        scope:['email']
+    }))
+
+    userRouter.get('/auth/facebook/callback',passport.authenticate('facebook',{
+        successRedirect:'/profile',
+        failureRedirect:'/signup'
+    }))
 
         
 

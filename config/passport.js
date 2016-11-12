@@ -1,6 +1,9 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    User = require('../models/User.js') 
+    FacebookStrategy = require('passport-facebook').Strategy,
+    User = require('../models/User.js') ,
+    configAuth = require('../config/auth.js')
+
 
 
 
@@ -56,6 +59,28 @@ var passport = require('passport'),
             if(!user) return done (null,false,req.flash('loginMessage','That user does not exist!'))
             if(!user.validPassword(password)) return done(null,false,req.flash('loginMessage','That is not the correct password'))
             return done(null,user)
+        })
+    }))
+
+
+    passport.use(new FacebookStrategy({
+        clientID: configAuth.facebook.clientID,
+        clientSecret: configAuth.facebook.clientSecret,
+        callbackURL: configAuth.facebook.callbackURL,
+        profileFields: configAuth.facebook.profileFields
+    }, function(token,refreshToken,profile,done){
+        User.findOne({'facebook.id': profile.id}, function(err,user){
+            if(err) return done(err)
+            if(user) return done(null,user)
+            var newUser = new User()
+            newUser.facebook.id = profile.id
+            newUser.facebook.token = token
+            newUser.facebook.name = profile.displayName
+            newUser.facebook.email = profile.emails[0].value
+            newUser.save(function(err){
+                if(err) return console.log(err)
+                return done(null,newUser)
+            })
         })
     }))
 
