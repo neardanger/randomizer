@@ -1,4 +1,7 @@
-var User = require('../models/User.js')
+var User = require('../models/User.js'),
+    passport = require('passport')
+    
+
 
 module.exports = {
     index: function(req,res){
@@ -35,8 +38,11 @@ module.exports = {
             user.save(function(err,user){
                 if(err) return console.log(err)
                 res.json({success:true, updatedUser:user})
+
             })
         })
     }
+
+
 }
     
