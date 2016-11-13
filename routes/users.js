@@ -73,7 +73,7 @@ var express = require('express'),
 
     
    userRouter.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook',{scope:'email'}));
 
 
 
