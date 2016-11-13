@@ -68,7 +68,7 @@ var passport = require('passport'),
         clientSecret: configAuth.facebook.clientSecret,
         callbackURL: configAuth.facebook.callbackURL,
         profileFields: configAuth.facebook.profileFields
-        
+
     }, function(token,refreshToken,profile,done){
         User.findOne({'facebook.id': profile.id}, function(err,user){
             if(err) return done(err)
@@ -76,7 +76,7 @@ var passport = require('passport'),
             var newUser = new User()
             newUser.facebook.id = profile.id
             newUser.facebook.token = token
-            newUser.facebook.name = profile.displayName
+            newUser.facebook.name = profile.name.givenName + '' + profile.name.familyName;
             newUser.facebook.email = profile.emails[0].value
             newUser.save(function(err){
                 if(err) return console.log(err)
