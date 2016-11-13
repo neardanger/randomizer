@@ -78,6 +78,7 @@ var passport = require('passport'),
             newUser.facebook.token = token
             newUser.facebook.name = profile.name.givenName + '' + profile.name.familyName;
             newUser.facebook.email = profile.emails[0].value
+            newUser.facebook.photos = profile.photos ? profile.photos[0].value : '/img/faces/unknown-user-pic.jpg'
             newUser.save(function(err){
                 if(err) return console.log(err)
                 return done(null,newUser)
