@@ -72,15 +72,21 @@ var express = require('express'),
  
 
     
-   userRouter.route('/auth/facebook',
+   userRouter.get('/auth/facebook',
   passport.authenticate('facebook'));
 
-userRouter.route('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/signup' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/profile');
-  });
+
+
+userRouter.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+      successRedirect:'/profile',
+      failureRedirect:('/signup')
+  }))
+  
+
+
+
+  
 
 
 

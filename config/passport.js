@@ -68,6 +68,7 @@ var passport = require('passport'),
         clientSecret: configAuth.facebook.clientSecret,
         callbackURL: configAuth.facebook.callbackURL,
         profileFields: configAuth.facebook.profileFields
+        
     }, function(token,refreshToken,profile,done){
         User.findOne({'facebook.id': profile.id}, function(err,user){
             if(err) return done(err)
