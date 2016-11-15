@@ -1,7 +1,7 @@
 module.exports = {
     'facebook':{
-        'clientID':'1131143190287421',
-        'clientSecret':'0ccccf2622eea557d18857b9db3651b3',
+        'clientID':'1615737972055027',
+        'clientSecret':'92769e9831761813d99fcb30e7504ad3',
         'callbackURL':'https://giphtur.herokuapp.com/auth/facebook/callback',
         'profileFields':['emails','displayName','photos']
 
