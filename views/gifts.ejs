@@ -94,22 +94,17 @@
       var gift = {
         gift1: giftID[0],
         gift2: giftID[1],
-        gift3: giftID[2],
+        gift3: giftID[2]
       }
       if (user) {
         $.ajax({
-          url: "/savedgifts:id",
+          url: "/savedgifts/" + user._id,
           method: 'POST',
-          data: JSON.stringify(user),
-          contentType: 'application/json'
+          data: user
         }).done(function(data) {
           Materialize.toast('Gifts saved',3000)
         window.location ='/savedgifts?gift1=' + giftID[0] +'&'+ '/savedgifts?gift2=' + giftID[1] +'&'+ '/savedgifts?gift3=' + giftID[2]
-        console.log(gift)
         });
-      }else {
-          window.location = '/savedgifts?gift1=' + giftID[0] +'&'+ '/savedgifts?gift2=' + giftID[1] +'&'+ '/savedgifts?gift3=' + giftID[2]
-        Materialize.toast("You have bgiftID meme'd")
       }
 
 

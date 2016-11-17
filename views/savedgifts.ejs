@@ -1,32 +1,31 @@
-
-
- <table class=row1 id="row1">
+  <table id="gift-table" class="responsive">
         <thead>
           <tr>
-             
-              <th data-field="price">Gifts</th>
+              <th data-field="id"><%=user.local.name || user.facebook.name%></th>
+              
           </tr>
         </thead>
+        
 
-        <tbody>
-          <tr>
-            <td><%=user.gifts%></td>
-            <td>
+        <tbody>   
+         <button id="showGift" type="button" class="waves-effect waves-light btn-large">Show gifts</button> 
+            <td></td>
+            
           </tr>
         </tbody>
       </table>
-            
-        
-    
-     <script>     
-  var user = <%-JSON.stringify(user)%>
+
+      
 
 
 
+<script type="text/javascript">
 
-if(user){
 
-    var giftID = []
+   var user = <%-JSON.stringify(user)%>
+
+
+ var giftID = []
 
 
   giftID[0] = sessionStorage.getItem('gift1');
@@ -34,24 +33,40 @@ if(user){
   giftID[2] = sessionStorage.getItem('gift3');
 
 
-var gift = {
+
+  var $showGift = $('#showGift')
+  $showGift.on('click',function(){
+    console.log("Showing items")
+
+
+    var gift = {
         gift1: giftID[0],
         gift2: giftID[1],
-        gift3: giftID[2],
+        gift3: giftID[2]
       }
+
+      if(user){
+
 
     $.ajax({
-        method:'POST',
-        url: "/savedgifts/:id",
-        data: JSON.stringify(user),
+        method:'GET',
+        url: "/savedgifts/" + user._id,
+        data: JSON.stringify(user.gifts),
         contentType:'application'
       }).done(function(data) {
-          .populate('user')
-         console.log(user)
-         console.log(gift)
+        console.log("gifts",gift)
+             })
+        }
+  })
 
-          })
-      }
+
+
+
+ 
+
+
+
+    
 </script>
 
 
