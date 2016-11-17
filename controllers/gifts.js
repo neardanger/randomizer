@@ -12,11 +12,14 @@ module.exports = {
 
 
     show: function(req,res){
-        Gift.findOne({_id:req.params.id},req.body,function(err,gift){
+        Gift.findOne({_id:req.user_.id})
+        .populate('gifts')
+        .exec(function(err,gift){
             console.log(req.body)
             if(err) return console.log(err)
             console.log(gift)
             res.json(gift)
+
         })
     },
 
