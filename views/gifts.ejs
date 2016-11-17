@@ -100,7 +100,7 @@
         $.ajax({
           url: "/savedgifts/" + user._id,
           method: 'POST',
-          data: user
+          data: user._id
         }).done(function(data) {
           Materialize.toast('Gifts saved',3000)
         window.location ='/savedgifts?gift1=' + giftID[0] +'&'+ '/savedgifts?gift2=' + giftID[1] +'&'+ '/savedgifts?gift3=' + giftID[2]
