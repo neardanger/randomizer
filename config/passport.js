@@ -10,7 +10,7 @@ var passport = require('passport'),
         done(null,user.id)
     }) 
 
-//The cookie goes into usser object
+//The cookie goes into user object
     passport.deserializeUser(function(id,done){
         User.findById(id,function(err,user){
             done(err,user)
