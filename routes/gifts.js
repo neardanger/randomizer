@@ -2,15 +2,23 @@ var express = require('express'),
     passport = require('passport'),
     giftRouter = express.Router(),
     giftCtrl = require('../controllers/gifts.js')
+    
 
-    giftRouter.route('/gifts', isLoggedIn)
+
+
+    giftRouter.get('/savedgifts/',isLoggedIn,function(req,res){
+        res.render('savedgifts',{user:req.user})
+    })
+
+
+    giftRouter.route('/savedgifts/',isLoggedIn)
         .get(giftCtrl.index)
-        .post(giftCtrl.show)
+        .post(giftCtrl.createGift)
 
-    giftRouter.route('/gifts/:id', isLoggedIn)
+    giftRouter.route('/savedgifts/:id', isLoggedIn)
         .post(giftCtrl.createGift)
         .put(giftCtrl.update)
-        .get(giftCtrl.show)
+        .get(giftCtrl.show)//This gets the gift from the user
         .delete(giftCtrl.destroy)
 
 

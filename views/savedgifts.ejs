@@ -1,0 +1,85 @@
+
+  <table id="gift-table" class="responsive">
+        <thead>
+          <tr>
+              <th data-field="id"><%=user.local.name || user.facebook.name%></th>
+              
+          </tr>
+        </thead>
+        
+
+        <tbody>   
+         <button id="showGift" type="button" class="waves-effect waves-light btn-large">Show gifts</button> 
+            <td>
+              <h1><%=user.gifts%></h1>
+            <img id="box-1"  alt="" />
+            <p id="name-1"></p>
+            <p id="sale-1"></p>
+
+
+
+
+
+
+
+            </td>
+           
+          </tr>
+        </tbody>
+      </table>
+
+      
+
+
+
+<script type="text/javascript">
+
+
+   var user = <%-JSON.stringify(user)%>
+
+
+ var giftID = []
+
+
+  giftID[0] = sessionStorage.getItem('gift1');
+  giftID[1] = sessionStorage.getItem('gift2');
+  giftID[2] = sessionStorage.getItem('gift3');
+
+
+
+  var $showGift = $('#showGift')
+  $showGift.on('click',function(){
+    console.log("Showing items")
+
+
+    var gift = {
+        gift1: giftID[0],
+        gift2: giftID[1],
+        gift3: giftID[2]
+      }
+
+      if(user){
+
+
+    $.ajax({
+        method:'GET',
+        url: "/savedgifts/" + user._id,
+        data: JSON.stringify(user.gifts),
+        contentType:'application'
+      }).done(function(data) {
+        console.log("gifts",user.gifts)
+          });
+        }
+  })
+
+
+
+
+ 
+
+
+
+    
+</script>
+
+

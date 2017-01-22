@@ -1,18 +1,12 @@
 var express = require('express'),
     passport = require('passport'),
     userRouter = express.Router(),
-    userCtrl = require('../controllers/users.js'),
-    User = require('../models/User.js')
-   
+    userCtrl = require('../controllers/users.js')
 
-    // userRouter.route('/users')
-    //     .get(userCtrl.index)
-    //     .post(userCtrl.create)
 
-    // userRouter.route('/users/:id')
-    //     .get(userCtrl.show)
-    //     .delete(userCtrl.destroy)
-    //     .patch(userCtrl.patch)
+
+    
+    //Need to protect these routes
 
     userRouter.route('/')
         .get(function(req,res){
@@ -38,23 +32,19 @@ var express = require('express'),
 
         }))
 
-        userRouter.route('/gifts')
-            .get(function(req,res){
-                res.render('gifts',{user:req.user})
-            })
+        userRouter.route('/gifts',isLoggedIn,function(req,res){
+            res.render('gifts', {user: req.user})
+        })
+              
 
          userRouter.get('/profile',isLoggedIn,function(req,res){
         res.render('profile',{user:req.user})
     })
 
-    userRouter.get('/update',isLoggedIn,function(req,res){
-        res.render('update',{user:req.user})
-    })
-
     userRouter.patch('/profile/:id',function(req,res){
         console.log(req.body)
         User.findOneAndUpdate({_id:req.params.id},req.body,{new:true},function(err,user){
-            if(err) console.log (err)
+        if(err) console.log (err)
         res.json({success:"You're through",user: user})
         console.log(user)
         })
@@ -70,6 +60,45 @@ var express = require('express'),
             }
         })
     })
+
+    userRouter.get('/update',isLoggedIn,function(req,res){
+        res.render('update',{user:req.user})
+    })
+
+
+
+
+//Facebook Routes
+ 
+
+    
+   userRouter.get('/auth/facebook',
+  passport.authenticate('facebook',{scope:'email'}));
+
+
+
+userRouter.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+      successRedirect:'/profile',
+      failureRedirect:('/signup')
+  }))
+  
+
+
+
+  
+
+
+
+    
+
+    
+
+
+  
+
+
+    /////////////////////
 
 
     function isLoggedIn(req,res,next){

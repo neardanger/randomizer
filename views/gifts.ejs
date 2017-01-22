@@ -2,13 +2,18 @@
         <div>
         <button id="roll" type="button" class="waves-effect waves-light btn-large">Roll The Dice</button>
         </div>
+        <div class="progress">
+      <div class="indeterminate"></div>
+        </div>
       <div class="col s4">
         <div class="section">
             <h3>Gift 1</h3>
               <div class="card small">
     <!-- Card Content -->
-    <img id="box-1" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+    <img id="box-1"  alt="" />
+    
         <p id="name-1"></p>
+        <p id="sale-1"></p>
   </div>
       </div>
       <div class="col s4">
@@ -16,8 +21,10 @@
             <h3>Gift 2</h3>
               <div class="card small">
     <!-- Card Content -->
-     <img id="box-2" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+     <img id="box-2"  alt="" />
+     
         <p id="name-2"></p>
+        <p id="sale-2"></p>
   </div>
             </div>
       </div>
@@ -26,25 +33,28 @@
             <h3>Gift 3</h3>
               <div class="card small">
     <!-- Card Content -->
-     <img id="box-3" src="https://i5.walmartimages.com/dfw/dce07b8c-52bd/k2-_ae3be777-76da-4d15-bc69-5d449589a4ef.v6.jpg" alt="" />
+     <img id="box-3"  alt="" />
+     
         <p id="name-3"></p>
-  </div>
+        <p id="sale-3"></p>
+             </div>
             </div>
       </div>
     </div>
         <div>
          <button id="save" type="button" class="waves-effect waves-light btn-large">Save Items</button>
         </div>
+        </div>
     
 
 <script type="text/javascript">
 
-  var giftDank = []
+  var giftID = []
 
 
-  giftDank[0] = sessionStorage.getItem('gift1');
-  giftDank[1] = sessionStorage.getItem('gift2');
-  giftDank[2] = sessionStorage.getItem('gift3');
+  giftID[0] = sessionStorage.getItem('gift1');
+  giftID[1] = sessionStorage.getItem('gift2');
+  giftID[2] = sessionStorage.getItem('gift3');
 
   $( ".progress" ).hide(); //hide load bar
   $( "#save" ).hide(); //hide checkout button
@@ -67,11 +77,12 @@
           for (var i = 1; i < 4; i++) {
             $('#box-'+i).attr('src', data[i-1].mediumImage);
             $('#name-'+i).text(data[i-1].name);
-            totalPrice += data[i-1].salePrice
+            $('#sale-'+i).text(data[i-1].salePrice);
+            totalPrice += data[i-1].msrp
             console.log(data[i-1]);
-            giftDank[i-1] = data[i-1].itemId
+            giftID[i-1] = data[i-1].itemId
           }
-          $('#total-price').text('$'+(Math.ceil(totalPrice-15)))
+          $('total-price').text('$' + (Math.ceil(totalPrice-15)))
       });
     })
 
@@ -81,23 +92,27 @@
     $save.on('click',function() {
       console.log("Items are saved");
       var gift = {
-        gift1: giftDank[0],
-        gift2: giftDank[1],
-        gift3: giftDank[2]
+        gift1: giftID[0],
+        gift2: giftID[1],
+        gift3: giftID[2]
       }
       if (user) {
         $.ajax({
-          url: "/gifts/"+ user._id, // how do I get the id?
+          url: "/savedgifts/" + user._id,
           method: 'POST',
-          data: gift // does this array work as body, is it the same as req.body???
+          data: user._id
         }).done(function(data) {
-          // modal for checkout that pulls from the database and makes a new API req.
+          Materialize.toast('Gifts saved',3000)
+        window.location ='/savedgifts?gift1=' + giftID[0] +'&'+ '/savedgifts?gift2=' + giftID[1] +'&'+ '/savedgifts?gift3=' + giftID[2]
         });
-      }else {
-        window.location = '/login?gift1=' + giftDank[0] +'&'+ '/login?gift2=' + giftDank[1] +'&'+ '/login?gift3=' + giftDank[2]
       }
 
 
     })
 
+
+
 </script>
+
+
+

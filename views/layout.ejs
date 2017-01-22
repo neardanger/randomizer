@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="public/bower_components/materialize/dist/css/materialize.css">
         <script src="public/bower_components/jquery/dist/jquery.js"></script>
         <script src="public/bower_components/materialize/dist/js/materialize.js"></script>
+        <script src="https://use.fontawesome.com/a28cfc838a.js"></script>
         <script src = "public/js/init.js"></script>
         
     </head>
@@ -34,7 +35,16 @@
 
  <footer class="footer">
     <% include ./partials/footer.ejs %>
+
+    <script type="text/javascript">
+  var user = <%-JSON.stringify(user)%>
+ </script>
+
+    
     </footer>
+
+
+  
  
 
     

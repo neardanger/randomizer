@@ -1,4 +1,7 @@
-var User = require('../models/User.js')
+var User = require('../models/User.js'),
+    passport = require('passport')
+    
+
 
 module.exports = {
     index: function(req,res){
@@ -23,20 +26,23 @@ module.exports = {
     },
 
     destroy: function(req,res){
-        User.findOneAndRemove({_id:req.params.id},function(err,user){
+        User.findOneAndRemove({_id:req.params.id},function(err){
             if(err) return console.log(err)
             res.json({success:true,message:"User was removed."})
         })
     },
 
-    patch: function(req,res){
-        User.findOneAndUpdate({_id:req.params.id},req.body,function(err,user){
+    update: function(req,res){
+        User.findOneAndUpdate({_id:req.params.id},req.body,{new: true},function(err,user){
             if(err) return console.log(err)
             user.save(function(err,user){
                 if(err) return console.log(err)
                 res.json({success:true, updatedUser:user})
+
             })
         })
     }
+
+
 }
     

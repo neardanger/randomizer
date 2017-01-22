@@ -1,9 +1,7 @@
 var express = require('express'),
+    cors = require('cors'),
     app = express(),
     logger = require('morgan'),
-    cors = require('cors'),
-    path = require('path'),
-    bodyParser = require('body-parser'),
     ejs = require('ejs'),
     ejsLayouts = require('express-ejs-layouts'),
     mongoose = require('mongoose'),
@@ -12,26 +10,34 @@ var express = require('express'),
     session = require('express-session'),
     passport = require('passport'),
     passportConfig = require('./config/passport')
-    request = require('request'),
     userRoutes = require('./routes/users.js'),
     giftRoutes = require('./routes/gifts.js'),
-    apiRoutes = require('./routes/api.js')
+    apiRoutes = require('./routes/api.js'),
+    path = require('path'),
+    request = require('request'),
+    bodyParser = require('body-parser')
+   
 
 
 
+app.use(cors())
 
-app.use('/public',express.static(path.join(__dirname,'public')))
+
+app.use('/public', express.static(path.join(__dirname,'public')))
 
 
 app.use(logger('dev'))
 app.use(cookieParser())
-app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 
-app.set('view engine','ejs')
+
+
 
 app.use(session({
     secret:'dank memes',
+    resave:true,
+    saveUninitialized:true,
     cookie:{_expires: 6000000}
 }))
 
@@ -41,6 +47,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
+app.set('view engine','ejs')
 
 
 app.use(ejsLayouts)
@@ -50,15 +57,31 @@ app.use(ejsLayouts)
 var port = process.env.PORT || 8000
 var dbUrl = process.env.MLAB_URI || 'mongodb://localhost/giphtur'
 
+mongoose.Promise = global.Promise;
 mongoose.connect(dbUrl,function(err){
     if(err) return console.log('Cannot connect to the server')
     console.log("You are connected to the database!")
 })
 
-app.get('/gifts',function(req,res){
+app.get('/gifts',isLoggedIn,function(req,res){
     console.log(req.query)
     res.render('gifts',{user:req.user})
 })
+
+
+app.get('/savedgifts/:id',isLoggedIn,function(req,res){
+    console.log(req.query)
+    res.render('savedgifts',{user:req.user})
+})
+
+
+
+
+
+function isLoggedIn(req,res,next) {
+  if (req.isAuthenticated()) return next()
+  res.redirect('/login')
+}
 
 
 
@@ -70,7 +93,8 @@ app.listen(port,function(req,res,next){
 
 //Advanced routes
 
-app.use('/',userRoutes)
-app.use('/',giftRoutes)
-app.get('/api',apiRoutes)
+app.use('/', userRoutes)
+app.use('/', giftRoutes)
+app.get('/api', apiRoutes)
+app.get('/api1',apiRoutes)
 

@@ -11,6 +11,7 @@
   "author": "steven",
   "license": "ISC",
   "dependencies": {
+    "ampl": "^1.0.5",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "connect-flash": "^0.1.1",
@@ -19,13 +20,13 @@
     "ejs": "^2.5.2",
     "express": "^4.14.0",
     "express-ejs-layouts": "^2.2.0",
-    "express-session": "^1.14.1",
-    "mongoose": "^4.6.1",
+    "express-session": "^1.14.2",
+    "mongoose": "^4.6.6",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "request": "^2.75.0"
+    "request": "^2.78.0"
   }
 }
