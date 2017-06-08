@@ -14,16 +14,10 @@
         <script src = "public/js/init.js"></script>
         
     </head>
-
-    
-
     <body>
    <main>
     <div class = "container" style="text-align:center">
-
-
  <%- body %>
-
  </main>
     </div>
 
@@ -35,25 +29,10 @@
 
  <footer class="footer">
     <% include ./partials/footer.ejs %>
-
-    <script type="text/javascript">
-  var user = <%-JSON.stringify(user)%>
- </script>
-
-    
     </footer>
-
-
-  
- 
-
-    
-   
-
-
-    
-
-
+<script type="text/javascript">
+  var user = <%=JSON.stringify(user)%>
+ </script>
  </body>
 
 
